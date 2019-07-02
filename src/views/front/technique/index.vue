@@ -3,7 +3,7 @@
     <div class="left">
       <ul class="article">
         <li v-for="item in 4" :key="item">
-          <div class="item" @click="toDetail">
+          <div class="item" @click.prevent="toDetail">
             <header>
               <h2>
                 <span>python</span>
@@ -45,7 +45,7 @@
       <div class="love">
         <h4>猜你喜欢</h4>
         <ul>
-          <li v-for="item in 5" :key="item">
+          <li v-for="item in 5" :key="item" @click.prevent="toDetail">
             <a href="">
               <img src="../../../static/img/avater.jpg" alt="">
             </a>
@@ -203,6 +203,7 @@ export default {
         ul{
           padding: 0 20px 20px;
           li{
+            cursor: pointer;
             display: flex;
             margin-bottom: 20px;
             a{

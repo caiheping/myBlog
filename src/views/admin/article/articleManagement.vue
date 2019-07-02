@@ -1,5 +1,25 @@
 <template>
   <div class="articleManagement">
+    <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog">
+      <el-form :model="form" ref="form">
+        <el-form-item label="标题" :label-width="formLabelWidth" prop="title">
+          <el-input v-model="form.title" autocomplete="off" placeholder="请输入标题"></el-input>
+        </el-form-item>
+        <el-form-item label="类型" :label-width="formLabelWidth" prop="type">
+          <el-select v-model="form.type" placeholder="请选择类型">
+            <el-option label="python" value="1"></el-option>
+            <el-option label="java" value="2"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="内容" :label-width="formLabelWidth" prop="content">
+          <tinymce-editor ref="tinymce" :data="form.content"></tinymce-editor>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="submit">确 定</el-button>
+      </div>
+    </el-dialog>
     <div class="top">
       <el-form :inline="true" :model="fromObj">
         <el-form-item label="类型名称">
@@ -10,7 +30,7 @@
         </el-form-item>
       </el-form>
       <div class="right">
-        <el-button type="primary">新增</el-button>
+        <el-button type="primary" @click="add">新增</el-button>
       </div>
     </div>
     <div class="content">
@@ -61,9 +81,9 @@
         <el-table-column
           label="操作"
           align="center"
-          width="150">
+          width="100">
           <template slot-scope="scope">
-            <el-button @click="del(scope.row)" type="text">查看</el-button>
+<!--            <el-button @click="del(scope.row)" type="text">查看</el-button>-->
             <el-button @click="edit(scope.row)" type="text" class="edit">编辑</el-button>
             <el-button @click="del(scope.row)" type="text" class="del">删除</el-button>
           </template>
@@ -85,7 +105,9 @@
 </template>
 
 <script>
+import TinymceEditor from '../../../components/tinymce-editor/index'
 export default {
+  components: { TinymceEditor },
   data () {
     return {
       currentPage: 5,
@@ -99,10 +121,28 @@ export default {
         browse: 55,
         love: 45,
         time: '2013-10-14 18:21:23'
-      }]
+      }],
+      dialogFormVisible: false,
+      formLabelWidth: '120px',
+      form: {
+        title: '',
+        content: '本地图片上传功能仅为演示，实际使用需要补全图片存储地址',
+        type: ''
+      }
     }
   },
   methods: {
+    submit () {
+      console.log(this.$refs.tinymce.content)
+      this.dialogFormVisible = false
+    },
+    closeDialog () {
+      this.$refs.form.resetFields()
+      this.$refs.form.clearValidate()
+    },
+    add () {
+      this.dialogFormVisible = true
+    },
     edit (row) {
       console.log(row)
     },

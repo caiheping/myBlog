@@ -1,9 +1,12 @@
 <template>
-  <div class="typeManagement">
+  <div class="friendshipLinks">
     <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog">
       <el-form :model="form" ref="form">
-        <el-form-item label="类型" :label-width="formLabelWidth" prop="type">
-          <el-input v-model="form.type" autocomplete="off" placeholder="请输入类型"></el-input>
+        <el-form-item label="图片索引" :label-width="formLabelWidth" prop="index">
+          <el-input v-model="form.index" autocomplete="off" placeholder="请输入图片索引，如：1"></el-input>
+        </el-form-item>
+        <el-form-item label="链接地址" :label-width="formLabelWidth" prop="url">
+          <el-input v-model="form.url" autocomplete="off" placeholder="请输入链接地址"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -13,8 +16,8 @@
     </el-dialog>
     <div class="top">
       <el-form :inline="true" :model="fromObj">
-        <el-form-item label="类型名称">
-          <el-input v-model="fromObj.typeName" placeholder="类型名称"></el-input>
+        <el-form-item label="图片索引">
+          <el-input v-model="fromObj.index" placeholder="请输入图片索引"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary">查询</el-button>
@@ -36,9 +39,14 @@
           width="40">
         </el-table-column>
         <el-table-column
-          prop="type"
+          prop="index"
           align="center"
-          label="类型">
+          label="图片索引">
+        </el-table-column>
+        <el-table-column
+          prop="url"
+          align="center"
+          label="链接地址">
         </el-table-column>
         <el-table-column
           label="操作"
@@ -51,17 +59,6 @@
         </el-table-column>
       </el-table>
     </div>
-    <div class="page">
-      <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="currentPage"
-        :page-sizes="[100, 200, 300, 400]"
-        :page-size="100"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="400">
-      </el-pagination>
-    </div>
   </div>
 </template>
 
@@ -69,17 +66,18 @@
 export default {
   data () {
     return {
-      currentPage: 5,
       fromObj: {
-        typeName: ''
+        index: ''
       },
       tableData: [{
-        type: 'python'
+        index: '2',
+        url: 'http://www.baidu.com'
       }],
       dialogFormVisible: false,
       formLabelWidth: '120px',
       form: {
-        type: ''
+        index: '',
+        url: ''
       }
     }
   },
@@ -96,19 +94,13 @@ export default {
     },
     del (row) {
       console.log(row)
-    },
-    handleSizeChange (val) {
-      console.log(`每页 ${val} 条`)
-    },
-    handleCurrentChange (val) {
-      console.log(`当前页: ${val}`)
     }
   }
 }
 </script>
 
 <style scoped lang="less">
-  .typeManagement{
+  .friendshipLinks{
     padding: 30px;
     box-sizing: border-box;
     .top{

@@ -11,36 +11,36 @@
       </el-upload>
     </div>
     <el-form label-width="100px" :model="formObj">
-      <el-form-item label="名称">
-        <el-input v-model="formObj.name"></el-input>
+      <el-form-item label="名称" prop="name">
+        <el-input v-model="formObj.name" placeholder="请输入名称"></el-input>
       </el-form-item>
-      <el-form-item label="座右铭">
-        <el-input v-model="formObj.motto"></el-input>
+      <el-form-item label="座右铭" prop="motto">
+        <el-input v-model="formObj.motto" placeholder="请输入座右铭"></el-input>
       </el-form-item>
-      <el-form-item label="个人兴趣">
-        <el-input v-model="formObj.hobby"></el-input>
+      <el-form-item label="个人兴趣" prop="hobby">
+        <el-input v-model="formObj.hobby" placeholder="请输入个人兴趣"></el-input>
       </el-form-item>
-      <el-form-item label="github">
-        <el-input v-model="formObj.github"></el-input>
+      <el-form-item label="github" prop="github">
+        <el-input v-model="formObj.github" placeholder="请输入github地址"></el-input>
       </el-form-item>
-      <el-form-item label="qq">
-        <el-input v-model="formObj.qq"></el-input>
+      <el-form-item label="qq" prop="qq">
+        <el-input v-model="formObj.qq" placeholder="请输入qq号"></el-input>
       </el-form-item>
-      <el-form-item label="邮箱">
-        <el-input v-model="formObj.mail"></el-input>
+      <el-form-item label="邮箱" prop="mail">
+        <el-input v-model="formObj.mail" placeholder="请输入邮箱"></el-input>
       </el-form-item>
-      <el-form-item label="微信">
-        <el-input v-model="formObj.wechat"></el-input>
+      <el-form-item label="微信" prop="wechat">
+        <el-input v-model="formObj.wechat" placeholder="请输入微信号码"></el-input>
       </el-form-item>
-      <el-form-item label="微博">
-        <el-input v-model="formObj.weibo"></el-input>
+      <el-form-item label="微博" prop="weibo">
+        <el-input v-model="formObj.weibo" placeholder="请输入微博"></el-input>
       </el-form-item>
-      <el-form-item label="RSS">
-        <el-input v-model="formObj.rss"></el-input>
+      <el-form-item label="RSS" prop="RSS">
+        <el-input v-model="formObj.rss" placeholder="请输入RSS"></el-input>
       </el-form-item>
     </el-form>
     <div class="skill">
-      <h3>我的技能</h3>
+      <h3>我的技能树</h3>
       <ul>
         <li v-for="(item, index) in skillArr" :key="index">
           <div class="item">
@@ -52,11 +52,12 @@
               <span>技能熟练度:</span>
               <el-input v-model="item.proficiency" placeholder="技能熟练度"></el-input>
             </div>
-            <el-button type="primary" @click="addSkill" v-if="index===0">新增技能树</el-button>
+            <el-button type="primary" @click="addSkill" v-if="index===0">新增技能</el-button>
           </div>
         </li>
       </ul>
     </div>
+    <el-button type="primary">保存</el-button>
   </div>
 </template>
 

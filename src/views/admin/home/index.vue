@@ -7,8 +7,10 @@
             html/css/js
           </div>
           <div class="right">
-            <span>库存</span>
+            <span>浏览量</span>
             <countTo class="num" :startVal='0' :endVal='3333' :duration='2000'></countTo>
+            <span>点赞数</span>
+            <countTo class="num" :startVal='0' :endVal='353' :duration='2000'></countTo>
           </div>
         </div>
       </div>
@@ -18,8 +20,10 @@
             python
           </div>
           <div class="right">
-            <span>库存</span>
+            <span>浏览量</span>
             <countTo class="num" :startVal='0' :endVal='3333' :duration='2000'></countTo>
+            <span>点赞数</span>
+            <countTo class="num" :startVal='0' :endVal='353' :duration='2000'></countTo>
           </div>
         </div>
       </div>
@@ -29,8 +33,23 @@
             java
           </div>
           <div class="right">
-            <span>库存</span>
+            <span>浏览量</span>
             <countTo class="num" :startVal='0' :endVal='3333' :duration='2000'></countTo>
+            <span>点赞数</span>
+            <countTo class="num" :startVal='0' :endVal='353' :duration='2000'></countTo>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="content">
+          <div class="itemLogo">
+            c++
+          </div>
+          <div class="right">
+            <span>浏览量</span>
+            <countTo class="num" :startVal='0' :endVal='3333' :duration='2000'></countTo>
+            <span>点赞数</span>
+            <countTo class="num" :startVal='0' :endVal='353' :duration='2000'></countTo>
           </div>
         </div>
       </div>
@@ -40,8 +59,10 @@
             other
           </div>
           <div class="right">
-            <span>库存</span>
+            <span>浏览量</span>
             <countTo class="num" :startVal='0' :endVal='3333' :duration='2000'></countTo>
+            <span>点赞数</span>
+            <countTo class="num" :startVal='0' :endVal='353' :duration='2000'></countTo>
           </div>
         </div>
       </div>
@@ -93,7 +114,9 @@ export default {
             padding: 10px;
             color: #333;
             box-sizing: border-box;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
           .right{
             color: #999;

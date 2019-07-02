@@ -1,5 +1,19 @@
 <template>
   <div class="note">
+    <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog">
+      <el-form :model="form" ref="form">
+        <el-form-item label="标题" :label-width="formLabelWidth" prop="title">
+          <el-input v-model="form.title" autocomplete="off" placeholder="请输入标题"></el-input>
+        </el-form-item>
+        <el-form-item label="内容" :label-width="formLabelWidth" prop="content">
+          <el-input v-model="form.content" type="textarea" :rows="3" autocomplete="off" placeholder="请输入内容"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+      </div>
+    </el-dialog>
     <div class="top">
       <el-form :inline="true" :model="fromObj">
         <el-form-item label="类型名称">
@@ -10,7 +24,7 @@
         </el-form-item>
       </el-form>
       <div class="right">
-        <el-button type="primary">新增</el-button>
+        <el-button type="primary" @click="add">新增</el-button>
       </div>
     </div>
     <div class="content">
@@ -77,10 +91,23 @@ export default {
         title: '啦啦啦',
         content: '今天又是活力满满的一天呀',
         time: '2015-05-13 16:12:00'
-      }]
+      }],
+      dialogFormVisible: false,
+      formLabelWidth: '120px',
+      form: {
+        title: '',
+        content: ''
+      }
     }
   },
   methods: {
+    closeDialog () {
+      this.$refs.form.resetFields()
+      this.$refs.form.clearValidate()
+    },
+    add () {
+      this.dialogFormVisible = true
+    },
     edit (row) {
       console.log(row)
     },

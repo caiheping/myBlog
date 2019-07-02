@@ -12,9 +12,7 @@
       style="display: none">
       <el-button ref="imageUpload">上传</el-button>
     </el-upload>
-    <span v-html="content"></span>
-    <br />
-    {{content}}
+<!--    <span v-html="content"></span>-->
   </div>
 </template>
 <script>
@@ -35,13 +33,17 @@ export default {
   components: {
     'editor': Editor
   },
+  props: {
+    data: {
+      type: String,
+      default: ''
+    }
+  },
   data () {
     return {
-      html: '',
-      fileList: [],
       tinymceFlag: 1,
       tinymceInit: {},
-      content: '本地图片上传功能仅为演示，实际使用需要补全图片存储地址'
+      content: this.data ? this.data : ''
     }
   },
   methods: {
@@ -93,3 +95,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  .tox-silver-sink{
+    z-index: 9999 !important;
+  }
+</style>

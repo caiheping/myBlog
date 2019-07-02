@@ -12,7 +12,6 @@ export default {
   components: { TinymceEditor },
   data () {
     return {
-
     }
   }
 }

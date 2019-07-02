@@ -31,7 +31,8 @@ export default new Router({
           name: 'home',
           component: () => import('../views/front/home/index.vue'),
           meta: {
-            title: '首页'
+            title: '首页',
+            keepAlive: true
           }
         },
         {
@@ -39,7 +40,8 @@ export default new Router({
           name: 'lifeNotes',
           component: () => import('../views/front/lifeNotes/index.vue'),
           meta: {
-            title: '生活笔记'
+            title: '生活笔记',
+            keepAlive: true
           }
         },
         {
@@ -47,7 +49,8 @@ export default new Router({
           name: 'technique',
           component: () => import('../views/front/technique/index.vue'),
           meta: {
-            title: '技术杂谈'
+            title: '技术杂谈',
+            keepAlive: true
           }
         },
         {
@@ -55,7 +58,8 @@ export default new Router({
           name: 'my',
           component: () => import('../views/front/my/index.vue'),
           meta: {
-            title: '关于自己'
+            title: '关于自己',
+            keepAlive: true
           }
         },
         {
@@ -63,7 +67,8 @@ export default new Router({
           name: 'detail',
           component: () => import('../views/front/detail/index.vue'),
           meta: {
-            title: '详情'
+            title: '详情',
+            keepAlive: true
           }
         },
         {
@@ -71,7 +76,8 @@ export default new Router({
           name: 'test',
           component: () => import('../views/front/test/index.vue'),
           meta: {
-            title: 'test'
+            title: 'test',
+            keepAlive: true
           }
         }
       ]
@@ -89,7 +95,8 @@ export default new Router({
           name: 'adminHome',
           component: () => import('../views/admin/home/index.vue'),
           meta: {
-            title: '首页'
+            title: '首页',
+            keepAlive: true
           }
         },
         {
@@ -97,7 +104,8 @@ export default new Router({
           name: 'typeManagement',
           component: () => import('../views/admin/article/typeManagement.vue'),
           meta: {
-            title: '类型管理'
+            title: '类型管理',
+            keepAlive: true
           }
         },
         {
@@ -105,7 +113,8 @@ export default new Router({
           name: 'articleManagement',
           component: () => import('../views/admin/article/articleManagement.vue'),
           meta: {
-            title: '技术杂谈'
+            title: '技术杂谈',
+            keepAlive: true
           }
         },
         {
@@ -113,7 +122,8 @@ export default new Router({
           name: 'introduction',
           component: () => import('../views/admin/user/introduction.vue'),
           meta: {
-            title: '个人简介'
+            title: '个人简介',
+            keepAlive: true
           }
         },
         {
@@ -121,7 +131,8 @@ export default new Router({
           name: 'note',
           component: () => import('../views/admin/user/note.vue'),
           meta: {
-            title: '个人笔记'
+            title: '个人笔记',
+            keepAlive: true
           }
         },
         {
@@ -129,7 +140,17 @@ export default new Router({
           name: 'friendshipLinks',
           component: () => import('../views/admin/other/friendshipLinks.vue'),
           meta: {
-            title: '友情链接'
+            title: '友情链接',
+            keepAlive: true
+          }
+        },
+        {
+          path: 'banner',
+          name: 'banner',
+          component: () => import('../views/admin/other/banner.vue'),
+          meta: {
+            title: '轮播管理',
+            keepAlive: true
           }
         }
       ]

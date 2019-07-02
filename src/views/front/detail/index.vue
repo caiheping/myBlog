@@ -35,6 +35,11 @@
     </div>
     <div class="content">
       <div v-html="content"></div>
+      <p class="other">转载请注明：小菜 » 滑动验证码的原理并利用 Vue 实现滑动验证码</p>
+      <div class="bottom">
+        <el-button type="primary">点赞</el-button>
+        <el-button type="primary">分享</el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -87,6 +92,17 @@ export default {
             }
           }
         }
+      }
+    }
+    .content{
+      .other{
+        line-height: 24px;
+        color: #999;
+      }
+      .bottom{
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
       }
     }
   }

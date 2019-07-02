@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     handleSelect (key, keyPath) {
-      console.log(key, keyPath)
+      // console.log(key, keyPath)
     }
   }
 }
@@ -77,6 +77,7 @@ export default {
 <style lang="less" scoped>
   .layout{
     background: #eee;
+    overflow: auto;
     .bg{
       position: fixed;
       height: calc(100vh);

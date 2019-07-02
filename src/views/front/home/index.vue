@@ -16,7 +16,7 @@
         </ul>
       </div>
       <ul class="article">
-        <li v-for="item in 9" :key="item">
+        <li v-for="item in 9" :key="item" @click.prevent="toDetail">
           <div class="item">
             <header>
               <h2>sdfdssd</h2>
@@ -56,7 +56,7 @@
       <div class="love">
         <h4>猜你喜欢</h4>
         <ul>
-          <li v-for="item in 5" :key="item">
+          <li v-for="item in 5" :key="item" @click.prevent="toDetail">
             <a href="">
               <img src="../../../static/img/avater.jpg" alt="">
             </a>
@@ -81,6 +81,21 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    toDetail () {
+      this.$router.push({
+        path: '/layout/detail',
+        query: {
+          id: 1
+        }
+      })
+    }
+  }
+}
+</script>
 
 <style scoped lang="less">
   .el-carousel__item h3 {
@@ -124,6 +139,7 @@
             line-height: 30px;
             p{
               color: #90bba8;
+              cursor: pointer;
             }
             .love{
               color: #f78585;
@@ -134,6 +150,7 @@
       .article{
         padding: 20px 0 0;
         li{
+          cursor: pointer;
           margin-bottom: 20px;
           overflow: hidden;
           border: 1px solid #EBEEF5;
@@ -219,6 +236,7 @@
         ul{
           padding: 0 20px 20px;
           li{
+            cursor: pointer;
             display: flex;
             margin-bottom: 20px;
             a{

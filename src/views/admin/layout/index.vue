@@ -8,7 +8,7 @@
         <el-aside width="auto">
           <el-scrollbar style="height: 100%;border-right: solid 1px #e6e6e6;">
             <el-menu :default-active="$store.state.activeMenu" :router=true class="el-menu-vertical-demo">
-              <el-menu-item index="home">
+              <el-menu-item index="adminHome">
                 <i class="fa fa-th-list" aria-hidden="true"></i>
                 <span slot="title">首页</span>
               </el-menu-item>
@@ -44,6 +44,9 @@
                 <el-menu-item index="friendshipLinks">
                   <span slot="title">友情链接</span>
                 </el-menu-item>
+                <el-menu-item index="banner">
+                  <span slot="title">轮播管理</span>
+                </el-menu-item>
               </el-submenu>
             </el-menu>
           </el-scrollbar>
@@ -53,9 +56,9 @@
             <div class="top">
               <div class="breadcrumb">
                 <el-breadcrumb separator="/">
-                  <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                  <el-breadcrumb-item :to="{ path: '/' }">活动管理</el-breadcrumb-item>
-                  <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+                  <transition name="el-fade-in-linear" mode="out-in">
+                    <el-breadcrumb-item>{{$route.meta.title}}</el-breadcrumb-item>
+                  </transition>
                 </el-breadcrumb>
               </div>
               <div class="right-menu">
@@ -69,13 +72,14 @@
             </div>
             <tags-view></tags-view>
             <div class="content">
-              <transition name="router-fade" mode="out-in">
-                <el-scrollbar style="height: 100%;">
-                  <div class="box">
-                    <router-view />
-                  </div>
-                </el-scrollbar>
-              </transition>
+              <el-scrollbar style="height: 100%;">
+                <transition name="el-fade-in-linear" mode="out-in">
+                  <keep-alive v-if="$route.meta.keepAlive">
+                    <router-view></router-view>
+                  </keep-alive>
+                  <router-view v-if="!$route.meta.keepAlive"></router-view>
+                </transition>
+              </el-scrollbar>
             </div>
           </div>
         </el-main>
@@ -102,7 +106,8 @@ export default {
     TagsView,
     ThemePicker
   },
-  methods: {
+  mounted () {
+    console.log(this.$route)
   }
 }
 </script>

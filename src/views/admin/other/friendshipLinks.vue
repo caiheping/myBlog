@@ -1,16 +1,30 @@
 <template>
   <div class="friendshipLinks">
+    <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog">
+      <el-form :model="form" ref="form">
+        <el-form-item label="标题" :label-width="formLabelWidth" prop="title">
+          <el-input v-model="form.title" autocomplete="off" placeholder="请输入标题"></el-input>
+        </el-form-item>
+        <el-form-item label="链接地址" :label-width="formLabelWidth" prop="url">
+          <el-input v-model="form.url" autocomplete="off" placeholder="请输入链接地址"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+      </div>
+    </el-dialog>
     <div class="top">
       <el-form :inline="true" :model="fromObj">
-        <el-form-item label="类型名称">
-          <el-input v-model="fromObj.typeName" placeholder="类型名称"></el-input>
+        <el-form-item label="标题">
+          <el-input v-model="fromObj.title" placeholder="请输入标题"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary">查询</el-button>
         </el-form-item>
       </el-form>
       <div class="right">
-        <el-button type="primary">新增</el-button>
+        <el-button type="primary" @click="add">新增</el-button>
       </div>
     </div>
     <div class="content">
@@ -65,15 +79,28 @@ export default {
     return {
       currentPage: 1,
       fromObj: {
-        typeName: ''
+        title: ''
       },
       tableData: [{
         title: '啦啦啦',
         url: 'http://www.baidu.com'
-      }]
+      }],
+      dialogFormVisible: false,
+      formLabelWidth: '120px',
+      form: {
+        title: '',
+        url: ''
+      }
     }
   },
   methods: {
+    closeDialog () {
+      this.$refs.form.resetFields()
+      this.$refs.form.clearValidate()
+    },
+    add () {
+      this.dialogFormVisible = true
+    },
     edit (row) {
       console.log(row)
     },
