@@ -36,10 +36,10 @@
         <el-form-item label="密码" prop="password" label-width="80px">
           <el-input type="password" v-model="loginForm.password" autocomplete="off" placeholder="请输入密码"></el-input>
         </el-form-item>
-        <el-form-item>
+        <div class="bottom">
           <el-button type="primary" @click="submitForm('loginForm')">提交</el-button>
           <el-button @click="resetForm('loginForm')">重置</el-button>
-        </el-form-item>
+        </div>
       </el-form>
     </div>
   </div>
@@ -76,24 +76,25 @@ export default {
   methods: {
     async submitForm (formName) {
       let _this = this
-      this.$refs[formName].validate(valid => {
-        if (valid) {
-          // loginApi(this.loginForm).then(res => {
-          //   if (res.code === 0) {
-          //     let userInfo = {
-          //       username: res.data.username,
-          //       userId: res.data.id,
-          //       avator: res.data.avator
-          //     }
-          //     sessionStorage.setItem('token', res.token)
-          //     sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
-          //     _this.$router.push('/layout/home')
-          //   }
-          // })
-        } else {
-          return false
-        }
-      })
+      this.$router.push('/adminLayout/adminHome')
+      // this.$refs[formName].validate(valid => {
+      //   if (valid) {
+      //     loginApi(this.loginForm).then(res => {
+      //       if (res.code === 0) {
+      //         let userInfo = {
+      //           username: res.data.username,
+      //           userId: res.data.id,
+      //           avator: res.data.avator
+      //         }
+      //         sessionStorage.setItem('token', res.token)
+      //         sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
+      //         _this.$router.push('/adminLayout/adminHome')
+      //       }
+      //     })
+      //   } else {
+      //     return false
+      //   }
+      // })
     },
     resetForm (formName) {
       this.$refs[formName].resetFields()
@@ -136,6 +137,11 @@ export default {
         margin-bottom: 10px;
         text-align: center;
         color: #ccc;
+      }
+      .bottom{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
       }
     }
   }

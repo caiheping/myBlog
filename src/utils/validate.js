@@ -45,7 +45,7 @@ export const rules = {
       callback()
     }
   },
-  sting: (rule, value, callback) => {
+  string: (rule, value, callback) => {
     if (!value.replace(/^(\s*)|(\s*)$/g, '')) {
       callback(new Error('请填字符串'))
     } else {

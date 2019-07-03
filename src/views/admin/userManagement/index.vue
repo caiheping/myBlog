@@ -1,9 +1,12 @@
 <template>
-  <div class="typeManagement">
-    <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog" width="500px">
-      <el-form :model="form" ref="form" :rules="rules">
-        <el-form-item label="类型" :label-width="formLabelWidth" prop="type">
-          <el-input v-model="form.type" autocomplete="off" placeholder="请输入类型"></el-input>
+  <div class="userManagement">
+    <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog" width="450px">
+      <el-form :model="form" ref="form" :rules="rules" :label-width="formLabelWidth">
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model="form.username" autocomplete="off" placeholder="请输入用户名"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="form.password" autocomplete="off" placeholder="请输入密码"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -13,8 +16,8 @@
     </el-dialog>
     <div class="top">
       <el-form :inline="true" :model="fromObj">
-        <el-form-item label="类型">
-          <el-input v-model="fromObj.typeName" placeholder="请输入类型"></el-input>
+        <el-form-item label="用户名">
+          <el-input v-model="fromObj.username" placeholder="请输入用户名"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary">查询</el-button>
@@ -36,9 +39,9 @@
           width="40">
         </el-table-column>
         <el-table-column
-          prop="type"
+          prop="username"
           align="center"
-          label="类型">
+          label="用户名">
         </el-table-column>
         <el-table-column
           label="操作"
@@ -72,20 +75,24 @@ export default {
     return {
       currentPage: 5,
       fromObj: {
-        typeName: ''
-      },
-      rules: {
-        type: [
-          { required: true, validator: rules.string, trigger: 'blur', message: '请输入类型' }
-        ]
+        username: ''
       },
       tableData: [{
-        type: 'python'
+        username: '啦啦啦'
       }],
+      rules: {
+        username: [
+          { required: true, validator: rules.string, trigger: 'blur', message: '请输入用户名' }
+        ],
+        password: [
+          { required: true, validator: rules.validPwd, trigger: 'blur' }
+        ]
+      },
       dialogFormVisible: false,
-      formLabelWidth: '60px',
+      formLabelWidth: '70px',
       form: {
-        type: ''
+        username: '',
+        password: ''
       }
     }
   },
@@ -114,7 +121,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-  .typeManagement{
+  .userManagement{
     padding: 30px;
     box-sizing: border-box;
     .top{

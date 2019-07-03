@@ -1,7 +1,7 @@
 <template>
   <div class="note">
     <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog">
-      <el-form :model="form" ref="form">
+      <el-form :model="form" ref="form" :rules="rules">
         <el-form-item label="标题" :label-width="formLabelWidth" prop="title">
           <el-input v-model="form.title" autocomplete="off" placeholder="请输入标题"></el-input>
         </el-form-item>
@@ -16,8 +16,8 @@
     </el-dialog>
     <div class="top">
       <el-form :inline="true" :model="fromObj">
-        <el-form-item label="类型名称">
-          <el-input v-model="fromObj.typeName" placeholder="类型名称"></el-input>
+        <el-form-item label="标题">
+          <el-input v-model="fromObj.title" placeholder="请输入标题"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary">查询</el-button>
@@ -80,12 +80,13 @@
 </template>
 
 <script>
+import { rules } from '@/utils/validate'
 export default {
   data () {
     return {
       currentPage: 5,
       fromObj: {
-        typeName: ''
+        title: ''
       },
       tableData: [{
         title: '啦啦啦',
@@ -94,6 +95,14 @@ export default {
       }],
       dialogFormVisible: false,
       formLabelWidth: '120px',
+      rules: {
+        title: [
+          { required: true, validator: rules.validPwd, trigger: 'blur', message: '请输入标题' }
+        ],
+        content: [
+          { required: true, validator: rules.validPwd, trigger: 'blur', message: '请输入内容' }
+        ]
+      },
       form: {
         title: '',
         content: ''

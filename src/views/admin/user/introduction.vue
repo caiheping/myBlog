@@ -26,8 +26,8 @@
       <el-form-item label="qq" prop="qq">
         <el-input v-model="formObj.qq" placeholder="请输入qq号"></el-input>
       </el-form-item>
-      <el-form-item label="邮箱" prop="mail">
-        <el-input v-model="formObj.mail" placeholder="请输入邮箱"></el-input>
+      <el-form-item label="邮箱" prop="email">
+        <el-input v-model="formObj.email" placeholder="请输入邮箱"></el-input>
       </el-form-item>
       <el-form-item label="微信" prop="wechat">
         <el-input v-model="formObj.wechat" placeholder="请输入微信号码"></el-input>
@@ -79,7 +79,7 @@ export default {
         hobby: '',
         github: '',
         qq: '',
-        mail: '',
+        email: '',
         wechat: '',
         weibo: '',
         rss: ''

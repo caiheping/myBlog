@@ -9,12 +9,13 @@
           <el-scrollbar style="height: 100%;border-right: solid 1px #e6e6e6;">
             <el-menu :default-active="$store.state.activeMenu" :router=true class="el-menu-vertical-demo">
               <el-menu-item index="adminHome">
-                <i class="fa fa-th-list" aria-hidden="true"></i>
                 <span slot="title">首页</span>
+              </el-menu-item>
+              <el-menu-item index="userManagement">
+                <span slot="title">用户管理</span>
               </el-menu-item>
               <el-submenu index="article">
                 <template slot="title">
-                  <i class="fa fa-music" aria-hidden="true"></i>
                   <span slot="title">文章模块</span>
                 </template>
                 <el-menu-item index="typeManagement">
@@ -26,7 +27,6 @@
               </el-submenu>
               <el-submenu index="user">
                 <template slot="title">
-                  <i class="fa fa-music" aria-hidden="true"></i>
                   <span slot="title">个人中心</span>
                 </template>
                 <el-menu-item index="introduction">
@@ -38,7 +38,6 @@
               </el-submenu>
               <el-submenu index="other">
                 <template slot="title">
-                  <i class="fa fa-music" aria-hidden="true"></i>
                   <span slot="title">其他</span>
                 </template>
                 <el-menu-item index="friendshipLinks">

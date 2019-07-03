@@ -152,6 +152,15 @@ export default new Router({
             title: '轮播管理',
             keepAlive: true
           }
+        },
+        {
+          path: 'userManagement',
+          name: 'userManagement',
+          component: () => import('../views/admin/userManagement/index.vue'),
+          meta: {
+            title: '用户管理',
+            keepAlive: true
+          }
         }
       ]
     }

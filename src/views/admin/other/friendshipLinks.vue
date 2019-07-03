@@ -1,7 +1,7 @@
 <template>
   <div class="friendshipLinks">
     <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog">
-      <el-form :model="form" ref="form">
+      <el-form :model="form" ref="form" :rules="rules">
         <el-form-item label="标题" :label-width="formLabelWidth" prop="title">
           <el-input v-model="form.title" autocomplete="off" placeholder="请输入标题"></el-input>
         </el-form-item>
@@ -74,6 +74,7 @@
 </template>
 
 <script>
+import { rules } from '@/utils/validate'
 export default {
   data () {
     return {
@@ -86,7 +87,15 @@ export default {
         url: 'http://www.baidu.com'
       }],
       dialogFormVisible: false,
-      formLabelWidth: '120px',
+      formLabelWidth: '100px',
+      rules: {
+        title: [
+          { required: true, validator: rules.validPwd, trigger: 'blur', message: '请输入标题' }
+        ],
+        url: [
+          { required: true, validator: rules.validPwd, trigger: 'blur', message: '请输入url地址' }
+        ]
+      },
       form: {
         title: '',
         url: ''
