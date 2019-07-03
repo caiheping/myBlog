@@ -7,15 +7,18 @@
       <el-container>
         <el-aside width="auto">
           <el-scrollbar style="height: 100%;border-right: solid 1px #e6e6e6;">
-            <el-menu :default-active="$store.state.activeMenu" :router=true class="el-menu-vertical-demo">
+            <el-menu :default-active="$store.state.activeMenu" :router=true class="el-menu">
               <el-menu-item index="adminHome">
+                <svg-icon icon-class="home" class-name="icon"/>
                 <span slot="title">首页</span>
               </el-menu-item>
               <el-menu-item index="userManagement">
+                <svg-icon icon-class="userManagement" class-name="icon"/>
                 <span slot="title">用户管理</span>
               </el-menu-item>
               <el-submenu index="article">
                 <template slot="title">
+                  <svg-icon icon-class="article" class-name="icon"/>
                   <span slot="title">文章模块</span>
                 </template>
                 <el-menu-item index="typeManagement">
@@ -27,6 +30,7 @@
               </el-submenu>
               <el-submenu index="user">
                 <template slot="title">
+                  <svg-icon icon-class="user" class-name="icon"/>
                   <span slot="title">个人中心</span>
                 </template>
                 <el-menu-item index="introduction">
@@ -38,6 +42,7 @@
               </el-submenu>
               <el-submenu index="other">
                 <template slot="title">
+                  <svg-icon icon-class="other" class-name="icon"/>
                   <span slot="title">其他</span>
                 </template>
                 <el-menu-item index="friendshipLinks">
@@ -130,6 +135,12 @@ export default {
       box-sizing: border-box;
       i{
         margin: 0 5px;
+      }
+    }
+
+    .el-menu{
+      svg{
+        margin-right: 5px;
       }
     }
 
