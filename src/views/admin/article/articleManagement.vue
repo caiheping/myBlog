@@ -1,9 +1,19 @@
 <template>
   <div class="articleManagement">
-    <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog">
+    <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog" class="dialog">
       <el-form :model="form" ref="form" :rules="rules">
         <el-form-item label="标题" :label-width="formLabelWidth" prop="title">
           <el-input v-model="form.title" autocomplete="off" placeholder="请输入标题"></el-input>
+        </el-form-item>
+        <el-form-item label="封面图片" :label-width="formLabelWidth" prop="title">
+          <el-upload
+            action="http://www.baidu.com"
+            :on-success="uploadSuccess"
+            :on-error="uploadError"
+            :show-file-list="false">
+            <el-button type="primary">上传图片</el-button>
+          </el-upload>
+          <img :src="form.cover_photo" alt="">
         </el-form-item>
         <el-form-item label="类型" :label-width="formLabelWidth" prop="type">
           <el-select v-model="form.type" placeholder="请选择类型">
@@ -58,6 +68,11 @@
           label="内容">
         </el-table-column>
         <el-table-column
+          prop="cover_photo"
+          align="center"
+          label="封面图片">
+        </el-table-column>
+        <el-table-column
           prop="type"
           align="center"
           label="类型"
@@ -72,7 +87,7 @@
         <el-table-column
           prop="love"
           align="center"
-          label="点赞人数"
+          label="喜欢人数"
           width="100">
         </el-table-column>
         <el-table-column
@@ -122,6 +137,7 @@ export default {
         title: 'Python 深度学习脚手架 ModelZoo',
         content: '想必大家都或多或少听过 TensorFlow 的大名，这是 Google 开源的一个深度学习框架，里面的模型和 API 可以说基本是一应俱全，但 TensorFlow 其实有很多让人吐槽的地方，比如 TensorFlow 早期是只支持静态图的，你要调试和查看变量的值的话就得一个个',
         type: 'python',
+        cover_photo: '',
         browse: 55,
         love: 45,
         time: '2013-10-14 18:21:23'
@@ -141,12 +157,29 @@ export default {
       },
       form: {
         title: '',
+        cover_photo: require('../../../static/img/avater.jpg'),
         content: '本地图片上传功能仅为演示，实际使用需要补全图片存储地址',
         type: ''
       }
     }
   },
   methods: {
+    // 上传成功
+    uploadSuccess (response, file, fileList) {
+      this.$message({
+        type: 'success',
+        message: '上传成功'
+      })
+      // this.getDatas()
+    },
+    // 上传失败
+    uploadError (err, file, fileList) {
+      this.$message({
+        type: 'error',
+        message: '上传失败'
+      })
+      console.log(err)
+    },
     submit () {
       console.log(this.$refs.tinymce.content)
       this.dialogFormVisible = false
@@ -178,6 +211,12 @@ export default {
   .articleManagement{
     padding: 30px;
     box-sizing: border-box;
+    .dialog{
+      img{
+        width: 200px;
+        margin: 20px 0 0;
+      }
+    }
     .top{
       display: flex;
       width: 100%;

@@ -11,7 +11,7 @@
         <ul>
           <li v-for="item in 5" :key="item">
             <p>{{item}}、Python2爬虫学习系列教程</p>
-            <span class="love">5646点赞</span>
+            <span class="love">5646喜欢</span>
           </li>
         </ul>
       </div>
@@ -42,7 +42,7 @@
               </span>
               <span class="muted">
                 <i class="el-icon-s-custom"></i>
-                23点赞
+                23喜欢
               </span>
             </p>
           </div>

@@ -10,7 +10,10 @@ export default new Vuex.Store({
     // 激活菜单
     activeMenu: 'home',
     // 主题
-    theme: '#80BCFB'
+    theme: '#80BCFB',
+    requestTime: '',
+    minLoading: 500,
+    loading: false
   },
   mutations: {
 

@@ -39,6 +39,7 @@
         <el-input v-model="formObj.rss" placeholder="请输入RSS"></el-input>
       </el-form-item>
     </el-form>
+    <el-button type="primary">保存</el-button>
     <div class="skill">
       <h3>我的技能树</h3>
       <ul>
@@ -46,27 +47,47 @@
           <div class="item">
             <div>
               <span>技能名称:</span>
-              <el-input v-model="item.skillName" placeholder="技能名称"></el-input>
+              <el-input v-model="item.skillName" disabled></el-input>
             </div>
             <div>
               <span>技能熟练度:</span>
-              <el-input v-model="item.proficiency" placeholder="技能熟练度"></el-input>
+              <el-input v-model="item.proficiency" disabled></el-input>
             </div>
+            <el-button @click="addSkill">编辑技能</el-button>
             <el-button type="primary" @click="addSkill" v-if="index===0">新增技能</el-button>
+            <el-button type="danger" @click="addSkill" v-else>删除技能</el-button>
           </div>
         </li>
       </ul>
     </div>
-    <el-button type="primary">保存</el-button>
+    <el-dialog title="新增技能" :visible.sync="dialogFormVisible" @close="closeDialog" width="500px">
+      <el-form :model="form" ref="form" :rules="rules">
+        <el-form-item label="名称" :label-width="formLabelWidth" prop="title">
+          <el-input v-model="form.title" autocomplete="off" placeholder="请输入技能名称"></el-input>
+        </el-form-item>
+        <el-form-item label="熟练度" :label-width="formLabelWidth" prop="proficiency">
+          <el-input v-model="form.proficiency" autocomplete="off" placeholder="请输入技能熟练度"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
+import { rules } from '@/utils/validate'
 export default {
   data () {
     return {
       uploadUrl: '/exam/student/download',
       skillArr: [
+        {
+          skillName: '',
+          proficiency: ''
+        },
         {
           skillName: '',
           proficiency: ''
@@ -83,6 +104,20 @@ export default {
         wechat: '',
         weibo: '',
         rss: ''
+      },
+      dialogFormVisible: false,
+      formLabelWidth: '80px',
+      rules: {
+        title: [
+          { required: true, validator: rules.validPwd, trigger: 'blur', message: '请输入技能' }
+        ],
+        proficiency: [
+          { required: true, validator: rules.validPwd, trigger: 'blur', message: '请输入技能熟练度' }
+        ]
+      },
+      form: {
+        title: '',
+        proficiency: ''
       }
     }
   },
@@ -102,11 +137,12 @@ export default {
         message: err.message
       })
     },
+    closeDialog () {
+      this.$refs.form.resetFields()
+      this.$refs.form.clearValidate()
+    },
     addSkill () {
-      this.skillArr.push({
-        skillName: '',
-        proficiency: ''
-      })
+      this.dialogFormVisible = true
     }
   }
 }
@@ -131,6 +167,7 @@ export default {
     }
     .skill{
       position: relative;
+      margin-top: 20px;
       h3{
         font-size: 20px;
         text-align: center;

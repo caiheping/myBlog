@@ -28,7 +28,7 @@
           </li>
           <li>
             <svg-icon icon-class="love" class-name="icon"/>
-            <span>123点赞</span>
+            <span>123喜欢</span>
           </li>
         </ul>
       </div>
@@ -37,7 +37,7 @@
       <div v-html="content"></div>
       <p class="other">转载请注明：小菜 » 滑动验证码的原理并利用 Vue 实现滑动验证码</p>
       <div class="bottom">
-        <el-button type="primary">点赞</el-button>
+        <el-button type="primary">喜欢</el-button>
         <el-button type="primary">分享</el-button>
       </div>
     </div>

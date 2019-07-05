@@ -5,7 +5,7 @@
         <v-header :title="title"></v-header>
       </el-header>
       <el-container>
-        <el-aside width="auto">
+        <el-aside width="200px">
           <el-scrollbar style="height: 100%;border-right: solid 1px #e6e6e6;">
             <el-menu :default-active="$store.state.activeMenu" :router=true class="el-menu">
               <el-menu-item index="adminHome">

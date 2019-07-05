@@ -1,12 +1,19 @@
 <template>
   <div class="friendshipLinks">
-    <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog">
+    <el-dialog title="新增" :visible.sync="dialogFormVisible" @close="closeDialog" class="dialog">
       <el-form :model="form" ref="form" :rules="rules">
         <el-form-item label="图片索引" :label-width="formLabelWidth" prop="index">
           <el-input v-model="form.index" autocomplete="off" placeholder="请输入图片索引，如：1"></el-input>
         </el-form-item>
         <el-form-item label="链接地址" :label-width="formLabelWidth" prop="url">
-          <el-input v-model="form.url" autocomplete="off" placeholder="请输入链接地址"></el-input>
+          <el-upload
+            action="http://www.baidu.com"
+            :on-success="uploadSuccess"
+            :on-error="uploadError"
+            :show-file-list="false">
+            <el-button type="primary">上传图片</el-button>
+          </el-upload>
+          <img :src="form.url" alt="">
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -86,7 +93,7 @@ export default {
       },
       form: {
         index: '',
-        url: ''
+        url: require('../../../static/img/avater.jpg')
       }
     }
   },
@@ -110,6 +117,12 @@ export default {
 
 <style scoped lang="less">
   .friendshipLinks{
+    .dialog{
+      img{
+        width: 200px;
+        margin-top: 20px;
+      }
+    }
     padding: 30px;
     box-sizing: border-box;
     .top{

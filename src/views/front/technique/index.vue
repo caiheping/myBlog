@@ -31,7 +31,7 @@
               </span>
               <span class="muted">
                 <i class="el-icon-s-custom"></i>
-                23点赞
+                23喜欢
               </span>
             </p>
           </div>

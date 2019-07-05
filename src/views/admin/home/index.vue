@@ -9,7 +9,7 @@
           <div class="right">
             <span>浏览量</span>
             <countTo class="num" :startVal='0' :endVal='3333' :duration='2000'></countTo>
-            <span>点赞数</span>
+            <span>喜欢数</span>
             <countTo class="num" :startVal='0' :endVal='353' :duration='2000'></countTo>
           </div>
         </div>
@@ -22,7 +22,7 @@
           <div class="right">
             <span>浏览量</span>
             <countTo class="num" :startVal='0' :endVal='3333' :duration='2000'></countTo>
-            <span>点赞数</span>
+            <span>喜欢数</span>
             <countTo class="num" :startVal='0' :endVal='353' :duration='2000'></countTo>
           </div>
         </div>
@@ -35,7 +35,7 @@
           <div class="right">
             <span>浏览量</span>
             <countTo class="num" :startVal='0' :endVal='3333' :duration='2000'></countTo>
-            <span>点赞数</span>
+            <span>喜欢数</span>
             <countTo class="num" :startVal='0' :endVal='353' :duration='2000'></countTo>
           </div>
         </div>
@@ -48,7 +48,7 @@
           <div class="right">
             <span>浏览量</span>
             <countTo class="num" :startVal='0' :endVal='3333' :duration='2000'></countTo>
-            <span>点赞数</span>
+            <span>喜欢数</span>
             <countTo class="num" :startVal='0' :endVal='353' :duration='2000'></countTo>
           </div>
         </div>
@@ -61,7 +61,7 @@
           <div class="right">
             <span>浏览量</span>
             <countTo class="num" :startVal='0' :endVal='3333' :duration='2000'></countTo>
-            <span>点赞数</span>
+            <span>喜欢数</span>
             <countTo class="num" :startVal='0' :endVal='353' :duration='2000'></countTo>
           </div>
         </div>
